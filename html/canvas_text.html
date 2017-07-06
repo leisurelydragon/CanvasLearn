@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>简单的canvas实例</title>
+		<style type="text/css">
+			.container{
+				width: 98vw;
+				height: 90vh;
+				background-color: white;
+				overflow: hidden;
+				text-align: center;
+			}
+			#canvas{
+				background-color: lightcyan;
+				margin: 33px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<canvas id="canvas" width="600" height="300">
+				Canvas not supported!
+			</canvas>
+			<div class="button_group">
+				<button onclick="saveState()">保存</button>
+				<button onclick="restoreState();">恢复</button>
+			</div>
+		</div>
+		<script>
+			function saveState(){//保存canvas的context的状态
+				context.save();//保存canvas绘图环境
+				context.fillStyle="orange";
+				context.strokeStyle="green";
+				context.fillText('Hello Canvas',canvas.width/2-150,canvas.height/2+15);
+				context.strokeText('Hello Canvas',canvas.width/2-150,canvas.height/2+15);
+			}
+			function restoreState(){
+				context.restore();//恢复canvas绘图环境
+				context.fillText('Hello Canvas',canvas.width/2-150,canvas.height/2+15);
+				context.strokeText('Hello Canvas',canvas.width/2-150,canvas.height/2+15);
+			}
+			var canvas =document.getElementById("canvas"),
+				context=canvas.getContext('2d');
+			context.font="48pt Arial";
+			context.fillStyle="cornflowerblue";
+			context.strokeStyle="blue";
+			context.fillText('Hello Canvas',canvas.width/2-150,canvas.height/2+15);
+			context.strokeText('Hello Canvas',canvas.width/2-150,canvas.height/2+15);
+		</script>
+	</body>
+</html>
